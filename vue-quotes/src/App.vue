@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <app-new-quote @quoteAddede="newQuote($event)"> </app-new-quote>
+    <app-new-quote @quoteAdded="newQuote($event)"> </app-new-quote>
     <app-quote-grid :quotes="quotes"> </app-quote-grid>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
   },
   methods:{
     newQuote(quote){
-
+      this.quotes.push(quote);
     }
   }
 }
