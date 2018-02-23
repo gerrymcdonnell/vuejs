@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+<!-- note here we pass in variables to the properities of the header component -->
+    <app-header :quoteCount="quotes.length" :maxQuotes="maxQuotes"> </app-header>
 
     <app-new-quote @quoteAdded="newQuote($event)"> </app-new-quote>
 
@@ -21,6 +23,7 @@
 <script>
 import QuoteGrid from './components/QuoteGrid.vue'
 import NewQuote from './components/NewQuote.vue'
+import Header from './components/Header.vue'
 
 export default {
   data:function(){
@@ -28,16 +31,20 @@ export default {
       quotes:[
         'just a quote'
       ],
-      maxQuotes:10
+      maxQuotes:5
     }
   },
   components:{
     /*local components*/
     appQuoteGrid:QuoteGrid,
-    appNewQuote:NewQuote
+    appNewQuote:NewQuote,
+    appHeader:Header
   },
   methods:{
     newQuote(quote){
+      if(this.quotes.length>=this.maxQuotes){
+        return alert('please delete quotes first');
+      }
       this.quotes.push(quote);
     },
     deleteQuote(index){

@@ -13,8 +13,12 @@
         </div>
     </div>
 </template>
+
+
 <script>
     export default {
-        props: ['quoteCount', 'maxQuotes']
+        props: [
+          'quoteCount', 
+          'maxQuotes']
     }
 </script>
