@@ -1,7 +1,20 @@
 <template>
   <div class="container">
+
     <app-new-quote @quoteAdded="newQuote($event)"> </app-new-quote>
-    <app-quote-grid :quotes="quotes"> </app-quote-grid>
+
+    <!--
+    listen for deleteQuote event
+    -->
+    <app-quote-grid :quotes="quotes" @quoteDeleted="deleteQuote"> </app-quote-grid>
+
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <div class="alert alert-info">
+          click to delete
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,6 +39,9 @@ export default {
   methods:{
     newQuote(quote){
       this.quotes.push(quote);
+    },
+    deleteQuote(index){
+      this.quotes.splice(index,1);
     }
   }
 }
