@@ -1,0 +1,157 @@
+<html>
+<head>
+    <title>second vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css">
+</head>
+
+<body>
+
+
+<div class="container">
+
+  <div id="app">
+
+    V input example
+      <input type="text" v-on:input= "changeTitle">
+      <p>{{ title }}</p>
+
+  <hr>
+
+      V bind to a link:
+      <a v-bind:href="link">my link </a>
+
+  <hr>
+      call a function
+      <p>{{ sayHello() }}</p>
+
+  <hr>
+      v-html Directive Raw html
+      <p>
+        <p v-html="finishedLink"> </p>
+      </p>
+
+<hr>
+        Events example with v-click
+      <button v-on:click="increase(2,$event)" type="button" name="button" class="btn btn-button primary">
+        Click me: {{counter}}
+
+        x is {{x}}
+        y is {{y}}
+
+      </button>
+
+<hr>
+    get event data
+    <button v-on:mousemove="updateCoordinate" type="button" name="button">Mouse over me! x={{x}} y={{y}}</button>
+    x is {{x}}
+    y is {{y}}
+<hr>
+
+  keyboard Events
+  <input type="text" v-on:keyup.enter.space="alertMe">
+
+<hr>
+  2 way data binding
+  <input type="text" v-model="name">
+  Name:{{name}}
+
+<hr>
+
+looping through objects
+ex1
+<ul>
+  <li v-for="person in persons">
+    {{person.name}}
+  </li>
+</ul>
+
+ex2 value
+<ul>
+  <li v-for="person in persons">
+    <span v-for="value in person">{{value}}</span>
+  </li>
+</ul>
+
+ex3 key value
+<ul>
+  <li v-for="person in persons">
+    <span v-for="(value,key) in person">
+    {{key}} = {{value}}
+    </span>
+  </li>
+</ul>
+
+
+ex4 key value
+<ul>
+  <li v-for="person in persons">
+    <span v-for="(value,key,index) in person">
+    {{key}} = {{value}}  ({{index}})
+    </span>
+  </li>
+</ul>
+
+<hr>
+
+show and hide with "v-if"
+<p v-if="show">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+<p v-else>im else</p>
+<button @click="show=!show" type="button" name="button">switch</button>
+
+<hr>
+numbers
+<span v-for="n in 10">{{n}}<br></span>
+
+
+
+
+<!--end-->
+</div><!-- end vue div -->
+</div><!-- end main container div -->
+
+
+
+
+<script>
+    new Vue({
+        el:	'#app',
+        data:{
+            title:	'hello world',
+            link: 'http://www.rte.ie',
+            finishedLink:'<a href="http://www.rte.ie">RTE</a>',
+            counter:0,
+            x:0,
+            y:0,
+            name:'ted',
+            persons:[
+              {name:'ted',age:22,color:'red'},
+              {name:'bob',age:45,color:'blue'}
+            ],
+            show:true
+        },
+        methods:{
+            changeTitle:function(event){
+                this.title=event.target.value;
+            },
+            sayHello:function(){
+              return 'hello';
+            },
+            increase:function(step,event){
+              this.counter+=step;
+              this.x=event.clientX;
+              this.y=event.clientY;
+            },
+            updateCoordinate:function (event){
+              this.x=event.clientX;
+              this.y=event.clientY;
+            },
+            alertMe(){
+              alert('you pressed enter!');
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

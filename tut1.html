@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>first vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+</head>
+
+<body>
+
+
+
+<div id="app">
+
+    <input type="text" v-on:input= "changeTitle">
+    <p>{{ title }}</p>
+
+    <a href="{{ link}}">my link </a>
+
+
+    <p>{{ sayHello() }}</p>
+
+</div>
+
+<script>
+    new Vue({
+        el:	'#app',
+        data:{
+            title:	'hello world',
+            link: 'http://www.rte.ie'
+        },
+        methods:{
+            changeTitle:function(event){
+                this.title=event.target.value;
+            },
+            sayHello:function(){
+              return 'hello';
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
