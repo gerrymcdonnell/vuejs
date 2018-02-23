@@ -1,16 +1,23 @@
 <template>
-  <div id="app">
-
+  <div class="container">
+    <app-quote-grid :quotes="quotes"> </app-quote-grid>
   </div>
 </template>
 
 <script>
+import QuoteGrid from './components/QuoteGrid.vue'
+
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  data:function(){
+    return{
+      quotes:[
+        'just a quote'
+      ],
+      maxQuotes:10
     }
+  },
+  components:{
+    appQuoteGrid:QuoteGrid
   }
 }
 </script>
